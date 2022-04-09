@@ -1,3 +1,5 @@
+# aciffmpeg
+## A Container Instance of FFMPEG
 
 Wrapper around ffmpeg to generate 5 seconds preview of the video as lightweight animated GIF
 
