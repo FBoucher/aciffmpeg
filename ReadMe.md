@@ -3,7 +3,7 @@
 
 Wrapper around ffmpeg to generate 5 seconds preview of the video as lightweight animated GIF
 
-A blog post that explains how I build it is comming soon.
+A blog post that explains how I build it is coming soon.
 
 ## Example
 To create a preview of any video you just need to map a volume and specify the file path and optionally mention if the video is vertical.
