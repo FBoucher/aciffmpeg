@@ -1,6 +1,6 @@
 #!/bin/sh
 
-while getopts ":i:vs" opt; do
+while getopts ":i:vs:" opt; do
   case $opt in
     i) inputFile="$OPTARG"
     ;;
