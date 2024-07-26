@@ -19,3 +19,16 @@ And on PowerShell like that:
 docker run -v c/dev/test:/video fboucher/aciffmpeg -i /video/sample.mp4 -v
 ```
 
+## Optional Start Parameter
+You can also specify an optional start parameter to set the start position of the video. The default value is `00:00:00.500`.
+
+On Linux/ WSL the command would look like this:
+
+``` bash
+docker run -v /mnt/c/dev/test:/video fboucher/aciffmpeg -i /video/sample.mp4 -s 00:00:01.000
+```
+
+And on PowerShell like that:
+``` powershell
+docker run -v c/dev/test:/video fboucher/aciffmpeg -i /video/sample.mp4 -s 00:00:01.000
+```
