@@ -1,10 +1,12 @@
 #!/bin/sh
 
-while getopts ":i:v" opt; do
+while getopts ":i:vs" opt; do
   case $opt in
     i) inputFile="$OPTARG"
     ;;
     v) isVertical=true
+    ;;
+    s) startPosition="$OPTARG"
     ;;
     \?) echo "Invalid option -$OPTARG" >&2
     exit 1
@@ -18,6 +20,7 @@ while getopts ":i:v" opt; do
   esac
 done
 if [ -z "$isVertical" ]; then isVertical=false; fi
+if [ -z "$startPosition" ]; then startPosition="00:00:00.500"; fi
 
 # used for bash 
 #IFS='.'
@@ -32,11 +35,12 @@ echo "------------------------"
 echo "InputFile: $inputFile"
 echo "outputFile: $outputFile"
 echo "Is Vertical: $isVertical"
+echo "Start Position: $startPosition"
 echo "========================"
 
 if $isVertical
 then
-  ffmpeg -r 60 -i $inputFile -loop 0 -vf scale=-1:320 -c:v gif -f gif -ss 00:00:00.500 -r 10 -t 5 - > $outputFile
+  ffmpeg -r 60 -i $inputFile -loop 0 -vf scale=-1:320 -c:v gif -f gif -ss $startPosition -r 10 -t 5 - > $outputFile
 else
-  ffmpeg -r 60 -i $inputFile -loop 0 -vf scale=320:-1 -c:v gif -f gif -ss 00:00:00.500 -r 10 -t 5 - > $outputFile
+  ffmpeg -r 60 -i $inputFile -loop 0 -vf scale=320:-1 -c:v gif -f gif -ss $startPosition -r 10 -t 5 - > $outputFile
 fi
